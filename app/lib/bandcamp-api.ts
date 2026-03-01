@@ -1,8 +1,8 @@
 import { parse } from 'node-html-parser'
 import pLimit from 'p-limit'
-import type { BandcampBuyer, CollectorsBlob, TrablumType } from '@/app/lib/shared/types'
+import type { BandcampBuyer, CollectorsBlob, TralbumType } from '@/app/lib/shared/types'
 import { decodeHtmlEntities, parsePageDataBlob } from '@/app/lib/shared/utils'
-import { BANDCAMP_COLLECTORS_URL } from '@/app/lib/bandcamp-routes'
+import { BANDCAMP_COLLECTORS_URL } from '@barnemax/bandcamp-types'
 
 const TIMEOUT_MS = 20000
 const MAX_RETRIES = 2
@@ -13,7 +13,7 @@ const COLLECTORS_API_DELAY_MS = 1000
 // Serialize collectors API calls to avoid concurrent 429s
 const collectorsLimit = pLimit(1)
 
-const ITEM_TYPE_MAP: Record<string, TrablumType> = {
+const ITEM_TYPE_MAP: Record<string, TralbumType> = {
     a: 'a',
     album: 'a',
     t: 't',
@@ -40,7 +40,7 @@ export function parseCollectorsBlob(html: string): CollectorsBlob | null {
     }
 }
 
-export function extractTrablumInfo(html: string): { id: number, type: TrablumType } | null {
+export function extractTrablumInfo(html: string): { id: number, type: TralbumType } | null {
     const match = html.match(/data-tralbum=["']([^"']+)["']/)
     if (!match) return null
 

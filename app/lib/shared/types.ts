@@ -1,18 +1,5 @@
-export type TrablumType = 'a' | 't'
-
-export interface CollectorsBlob {
-    more_thumbs_available: boolean
-    thumbs: { fan_id: number, image_id: number, name: string, username: string }[]
-}
-
-export interface BandcampCollectionItem {
-    id: number
-    item_url: string
-}
-
-export interface BandcampCollectionResponse {
-    items: BandcampCollectionItem[]
-}
+// Bandcamp data-shape types — sourced from @barnemax/bandcamp-types
+export type { TralbumType, CollectorsBlob, BandcampCollectionItem, BandcampCollectionResponse } from '@barnemax/bandcamp-types'
 
 export interface PageDataBlob {
     collection_count?: number

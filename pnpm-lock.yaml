@@ -24,6 +24,9 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
     devDependencies:
+      '@barnemax/bandcamp-types':
+        specifier: file:..\bandcamp-types
+        version: file:../bandcamp-types
       '@tailwindcss/postcss':
         specifier: ^4.2.1
         version: 4.2.1
@@ -121,6 +124,9 @@ packages:
   '@babel/types@7.29.0':
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
+
+  '@barnemax/bandcamp-types@file:../bandcamp-types':
+    resolution: {directory: ../bandcamp-types, type: directory}
 
   '@emnapi/core@1.8.1':
     resolution: {integrity: sha512-AvT9QFpxK0Zd8J0jopedNm+w/2fIzvtPKPjqyw9jwvBaReTTqPBk9Hixaz7KbjimP+QNz605/XnjFcDAL2pqBg==}
@@ -2073,6 +2079,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
+
+  '@barnemax/bandcamp-types@file:../bandcamp-types': {}
 
   '@emnapi/core@1.8.1':
     dependencies:

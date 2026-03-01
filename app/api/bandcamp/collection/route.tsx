@@ -3,7 +3,7 @@ import type { BandcampCollectionResponse, CachedResult, EnrichedBuyer } from '@/
 import { crawlCollectionBuyers, enrichTopBuyers } from '@/app/lib/crawl-buyers'
 import { aggregateBuyers } from '@/app/lib/buyer-utils'
 import { cacheGet, cacheSet } from '@/app/lib/cache'
-import { BANDCAMP_COLLECTION_URL } from '@/app/lib/bandcamp-routes'
+import { BANDCAMP_COLLECTION_URL } from '@barnemax/bandcamp-types'
 
 async function getCollectionItems(fanId: string): Promise<BandcampCollectionResponse> {
     const res = await fetch(BANDCAMP_COLLECTION_URL, {
