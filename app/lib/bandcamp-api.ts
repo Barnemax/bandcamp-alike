@@ -34,6 +34,7 @@ export function parseCollectorsBlob(html: string): CollectorsBlob | null {
     try {
         const raw = el.getAttribute('data-blob')
         if (!raw) return null
+
         return JSON.parse(decodeHtmlEntities(raw)) as CollectorsBlob
     } catch {
         return null
@@ -55,6 +56,7 @@ export function extractTrablumInfo(html: string): { id: number, type: TralbumTyp
 
 export function extractTags(html: string): string[] {
     const root = parse(html)
+
     return root.querySelectorAll('.tralbum-tags .tag')
         .map(el => el.text.trim())
         .filter(Boolean)

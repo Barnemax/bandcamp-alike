@@ -11,6 +11,7 @@ const eslintConfig = defineConfig([
         allowExpressions: true,
         allowTypedFunctionExpressions: true,
       }],
+      'padding-line-between-statements': ['error', { blankLine: 'always', next: 'return', prev: '*' }],
       'quotes': ['error', 'single', { avoidEscape: true }],
       'sort-keys': ['error', 'asc', { caseSensitive: false, natural: true }],
     },

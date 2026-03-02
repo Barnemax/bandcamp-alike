@@ -62,9 +62,11 @@ export async function POST(request: NextRequest): Promise<Response> {
         }
 
         const { fanId, username } = await extractFanIdFromProfileUrl(url)
+
         return Response.json({ fanId, username })
     } catch (err) {
         const message = err instanceof Error ? err.message : String(err)
+
         return Response.json({ error: message }, { status: 500 })
     }
 }

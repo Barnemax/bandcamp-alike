@@ -8,6 +8,7 @@ const RETRY_QUEUE_DELAY_MS = 5000
 
 function filterBuyers(buyers: BandcampBuyer[], excludeUsername?: string): BandcampBuyer[] {
     if (!excludeUsername) return buyers
+
     return buyers.filter(b => !b.url.includes(`/${excludeUsername}`))
 }
 
@@ -32,9 +33,11 @@ export async function crawlCollectionBuyers(
         limit(async (): Promise<CrawlItemResult> => {
             try {
                 await sleep(REQUEST_DELAY_MS)
+
                 return await crawlItem(url, excludeUsername)
             } catch (err) {
                 const message = err instanceof Error ? err.message : String(err)
+
                 return { buyers: [], error: message, tags: [], url }
             } finally {
                 completed++
@@ -86,5 +89,6 @@ export async function enrichTopBuyers(
     )
 
     const results = await Promise.all(tasks)
+
     return results.sort((a, b) => b.percentage - a.percentage)
 }

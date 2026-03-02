@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "test": "vitest"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -25,6 +26,7 @@
     "eslint": "^9.39.3",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }

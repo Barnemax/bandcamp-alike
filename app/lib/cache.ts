@@ -12,6 +12,7 @@ interface CacheEntry<T> {
 
 function filePath(key: string): string {
   const safe = key.replace(/[^a-zA-Z0-9_-]/g, '_')
+
   return path.join(CACHE_DIR, `${safe}.json`)
 }
 
@@ -19,6 +20,7 @@ export async function cacheGet<T>(key: string): Promise<T | null> {
   try {
     const raw = await readFile(filePath(key), 'utf-8')
     const entry: CacheEntry<T> = JSON.parse(raw)
+
     return entry.data
   } catch {
     return null
@@ -36,6 +38,7 @@ export async function cacheSet<T>(key: string, data: T, profile: Omit<CachedProf
 async function readIndex(): Promise<CachedProfile[]> {
   try {
     const raw = await readFile(INDEX_PATH, 'utf-8')
+
     return JSON.parse(raw)
   } catch {
     return []
@@ -55,6 +58,7 @@ async function indexUpsert(profile: CachedProfile): Promise<void> {
 
 export async function getRecentProfiles(limit: number): Promise<CachedProfile[]> {
   const index = await readIndex()
+
   return index
     .sort((a, b) => b.cachedAt - a.cachedAt)
     .slice(0, limit)
@@ -62,6 +66,7 @@ export async function getRecentProfiles(limit: number): Promise<CachedProfile[]>
 
 export async function getAllProfiles(): Promise<CachedProfile[]> {
   const index = await readIndex()
+
   return index
     .sort((a, b) => b.cachedAt - a.cachedAt)
 }

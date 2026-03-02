@@ -100,6 +100,7 @@ export function useCrawl(fanId: string, username: string): UseCrawlResult {
 
     useEffect(() => {
         startCrawl()
+
         return () => controllerRef.current?.abort()
     }, [startCrawl])
 

@@ -15,6 +15,7 @@ export function timeAgo(timestamp: number): string {
     if (Math.abs(hours) < 24) return rtf.format(hours, 'hour');
     if (Math.abs(days) < 7) return rtf.format(days, 'day');
     if (Math.abs(weeks) < 5) return rtf.format(weeks, 'week');
+
     return rtf.format(months, 'month');
 }
 

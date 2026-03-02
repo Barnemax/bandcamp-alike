@@ -16,6 +16,7 @@ async function getCollectionItems(fanId: string): Promise<BandcampCollectionResp
         method: 'POST',
 
     })
+
     return res.json() as Promise<BandcampCollectionResponse>
 }
 
@@ -55,6 +56,7 @@ export async function POST(request: NextRequest): Promise<Response> {
                         type: 'enriched',
                     })
                     controller.close()
+
                     return
                 }
 

@@ -57,6 +57,7 @@ export default function ResultsPage(): React.JSX.Element {
   // Index enriched buyers by URL for fast lookup
   const enrichedMap = useMemo(() => {
     if (!enrichedBuyers) return new Map()
+
     return new Map(enrichedBuyers.map((eb) => [eb.buyer.url, eb]))
   }, [enrichedBuyers]);
 
@@ -71,6 +72,7 @@ export default function ResultsPage(): React.JSX.Element {
         for (const t of selectedTags) {
           if (tags.has(t)) return true;
         }
+
         return false;
       });
     }
@@ -79,6 +81,7 @@ export default function ResultsPage(): React.JSX.Element {
       return [...list].sort((a, b) => {
         const aPct = enrichedMap.get(a.buyer.url)?.percentage ?? 0;
         const bPct = enrichedMap.get(b.buyer.url)?.percentage ?? 0;
+
         return bPct - aPct || b.count - a.count;
       });
     }
@@ -96,6 +99,7 @@ export default function ResultsPage(): React.JSX.Element {
       } else {
         next.add(tag);
       }
+
       return next;
     });
   }
@@ -229,6 +233,7 @@ export default function ResultsPage(): React.JSX.Element {
               <div className="grid gap-3">
                 {displayBuyers.map(({ buyer, count }, i) => {
                   const enriched = enrichedMap.get(buyer.url);
+
                   return (
                     <BandcampFan
                       key={buyer.url}

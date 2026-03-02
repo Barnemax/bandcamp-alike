@@ -10,6 +10,7 @@ export function generateHtmlExport(data: ExportData): string {
 
     const buyers = data.buyers.map(({ buyer, count, tags }) => {
         const eb = enrichedMap.get(buyer.url)
+
         return {
             buyer,
             count,
@@ -53,6 +54,7 @@ export function generateHtmlExport(data: ExportData): string {
                 .filter(t => topTagIndex.has(t))
                 .map(t => `tag-${topTagIndex.get(t)}`)
                 .join(' ')
+
             return (
                 `<a href="${escapeHtmlStr(b.buyer.url)}" target="_blank" rel="noopener noreferrer" class="fan-card${tagClasses ? ' ' + tagClasses : ''}">` +
                 '<div class="fan-row">' +

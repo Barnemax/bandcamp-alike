@@ -17,5 +17,6 @@ export async function DELETE(request: Request): Promise<Response> {
   if (!fanId) return new Response('Missing fanId', { status: 400 })
 
   await cacheDelete(fanId)
+
   return new Response(null, { status: 204 })
 }
