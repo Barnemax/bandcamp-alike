@@ -3,14 +3,14 @@ import type { BandcampCollectionResponse, CachedResult, EnrichedBuyer } from '@/
 import { crawlCollectionBuyers, enrichTopBuyers } from '@/app/lib/crawl-buyers'
 import { aggregateBuyers } from '@/app/lib/buyer-utils'
 import { cacheGet, cacheSet } from '@/app/lib/cache'
-import { BANDCAMP_COLLECTION_URL } from '@barnemax/bandcamp-types'
+import { BANDCAMP_COLLECTION_URL, BANDCAMP_COLLECTION_INITIAL_TOKEN } from '@barnemax/bandcamp-types'
 
 async function getCollectionItems(fanId: string): Promise<BandcampCollectionResponse> {
     const res = await fetch(BANDCAMP_COLLECTION_URL, {
         body: JSON.stringify({
             count: 10000,
             fan_id: fanId,
-            older_than_token: '9999999999::a::',
+            older_than_token: BANDCAMP_COLLECTION_INITIAL_TOKEN,
         }),
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
